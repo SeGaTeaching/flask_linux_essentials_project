@@ -1,0 +1,10 @@
+<!-- zaehler.html -->
+{% extends "base.html" %}
+{% block content %}
+<h1>Woerter- &amp; Zeichenzaehler</h1>
+<form method="post">
+  <textarea name="text" rows="6" placeholder="Text hier einfuegen ...">{{ text }}</textarea>
+  <button type="submit">Zaehlen</button>
+</form>
+<div class="ergebnis"><span><strong>{{ woerter }}</strong> Woerter</span><span><strong>{{ zeichen }}</strong> Zeichen</span></div>
+{% endblock %}
