@@ -1,0 +1,10 @@
+<!-- templates/temperatur.html -->
+{% extends "base.html" %}
+{% block content %}
+<h1>Temperatur-Umrechner</h1>
+<form method="post">
+  <input name="celsius" type="text" placeholder="z. B. 20" value="{{ celsius if celsius is not none else '' }}">
+  <button type="submit">Umrechnen</button>
+</form>
+{% if fahrenheit is not none %}<div class="ergebnis"><span><strong>{{ celsius }} &deg;C</strong> = <strong>{{ fahrenheit }} &deg;F</strong></span></div>{% endif %}
+{% endblock %}
