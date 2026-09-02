@@ -37,6 +37,21 @@ def passwort():
         pw = "".join(secrets.choice(alphabet) for _ in range(laenge))
     return render_template("passwort.html", pw=pw, laenge=laenge)
 
+@app.route("/farbe", methods=["GET", "POST"])
+def farbe():
+    hexwert, rgb, fehler = "#3498db", None, None
+    if request.method == "POST":
+        h = request.form.get("hex", "").strip().lstrip("#")
+        if len(h) == 3:                       # Kurzform #abc -> #aabbcc
+            h = "".join(c * 2 for c in h)
+        try:
+            if len(h) != 6:
+                raise ValueError
+            rgb = tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
+            hexwert = "#" + h.lower()
+        except ValueError:
+            fehler = "Bitte einen gültigen Hex-Code eingeben, z. B. #3498db."
+    return render_template("farbe.html", hexwert=hexwert, rgb=rgb, fehler=fehler)
 
 if __name__ == "__main__":
     app.run(debug=True)
