@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Passwort-Generator</h1>
+<form method="post">
+  <input name="laenge" type="number" min="4" max="64" value="{{ laenge }}">
+  <button type="submit">Erzeugen</button>
+</form>
+{% if pw %}<div class="ergebnis"><code class="pw">{{ pw }}</code></div>{% endif %}
+{% endblock %}
