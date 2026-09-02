@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Farb-Vorschau (Hex &rarr; RGB)</h1>
+<form method="post">
+  <input name="hex" type="text" placeholder="#3498db" value="{{ hexwert }}">
+  <button type="submit">Anzeigen</button>
+</form>
+{% if fehler %}<p style="color:#fb7185">{{ fehler }}</p>{% endif %}
+{% if rgb %}
+<div class="ergebnis">
+  <span style="display:inline-block;width:72px;height:72px;border-radius:12px;border:1px solid var(--line);background:{{ hexwert }}"></span>
+  <span><strong>{{ hexwert }}</strong> = rgb({{ rgb[0] }}, {{ rgb[1] }}, {{ rgb[2] }})</span>
+</div>
+{% endif %}
+{% endblock %}
